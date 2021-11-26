@@ -7,6 +7,7 @@ import android.content.res.XModuleResources
 import android.os.Build
 import com.duzhaokun123.hcbetter.hook.*
 import com.duzhaokun123.hcbetter.utils.*
+import com.github.kyuubiran.ezxhelper.init.EzXHelperInit
 import de.robv.android.xposed.IXposedHookLoadPackage
 import de.robv.android.xposed.IXposedHookZygoteInit
 import de.robv.android.xposed.callbacks.XC_LoadPackage
@@ -22,6 +23,7 @@ class XposedInit : IXposedHookLoadPackage, IXposedHookZygoteInit {
     }
 
     override fun initZygote(startupParam: IXposedHookZygoteInit.StartupParam) {
+        EzXHelperInit.initZygote(startupParam)
         modulePath = startupParam.modulePath
         moduleRes = XModuleResources.createInstance(modulePath, null)
     }
@@ -29,6 +31,8 @@ class XposedInit : IXposedHookLoadPackage, IXposedHookZygoteInit {
     override fun handleLoadPackage(lpparam: XC_LoadPackage.LoadPackageParam) {
         if (lpparam.packageName !in HTTP_CANARY_PACKAGE_NAME
             &&  runCatching { Class.forName("com.guoshi.httpcanary.ui.SplashActivity") }.isFailure) return
+
+        EzXHelperInit.initHandleLoadPackage(lpparam)
 
         Instrumentation::class.java.hookBeforeMethod(
             "callApplicationOnCreate",
@@ -49,6 +53,9 @@ class XposedInit : IXposedHookLoadPackage, IXposedHookZygoteInit {
                     Log.toast(
                         "HC Better enabled"
                     )
+                    EzXHelperInit.initAppContext()
+                    EzXHelperInit.initActivityProxyManager(BuildConfig.APPLICATION_ID, "com.guoshi.httpcanary.ui.SplashActivity", lpparam.classLoader)
+                    EzXHelperInit.initSubActivity()
                     classesList = lpparam.classLoader.allClassesList { it }
                     runNewThread {
                         getJks(lpparam.classLoader)

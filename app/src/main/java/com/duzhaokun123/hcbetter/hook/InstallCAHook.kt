@@ -10,6 +10,7 @@ import android.widget.ScrollView
 import com.duzhaokun123.hcbetter.R
 import com.duzhaokun123.hcbetter.XposedInit.Companion.moduleRes
 import com.duzhaokun123.hcbetter.utils.*
+import com.duzhaokun123.hcbetter.view.SimpleItem
 import kotlinx.coroutines.delay
 import net.lingala.zip4j.ZipFile
 import net.lingala.zip4j.model.ZipParameters
@@ -79,15 +80,17 @@ class InstallCAHook(mClassLoader: ClassLoader) : BaseHook(mClassLoader) {
             if (sl.tag != "hooked1") sl.tag =
                 "hooked1" else return@hookAfterMethod
             ((sl as ViewGroup).getChildAt(0) as ViewGroup).apply {
-                addView(Button(self).apply {
-                    text = "mark as installed"
+                addView(SimpleItem(self).apply {
+                    title = "Mark as installed"
+                    desc = "Create HttpCanary.jks file at ${self.cacheDir}"
                     setOnClickListener {
                         File(self.cacheDir, "HttpCanary.jks").createNewFile()
                         self.recreate()
                     }
                 })
-                addView(Button(self).apply {
-                    text = "export magisk module"
+                addView(SimpleItem(self).apply {
+                    title = "Export magisk module"
+                    desc = "Install system CA via magisk"
                     setOnClickListener {
                         val intent = Intent(Intent.ACTION_CREATE_DOCUMENT)
                         intent.type = "application/zip"
