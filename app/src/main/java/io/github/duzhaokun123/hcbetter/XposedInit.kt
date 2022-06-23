@@ -1,12 +1,12 @@
-package com.duzhaokun123.hcbetter
+package io.github.duzhaokun123.hcbetter
 
 import android.app.Application
 import android.app.Instrumentation
 import android.content.res.Resources
 import android.content.res.XModuleResources
 import android.os.Build
-import com.duzhaokun123.hcbetter.hook.*
-import com.duzhaokun123.hcbetter.utils.*
+import io.github.duzhaokun123.hcbetter.hook.*
+import io.github.duzhaokun123.hcbetter.utils.*
 import com.github.kyuubiran.ezxhelper.init.EzXHelperInit
 import de.robv.android.xposed.IXposedHookLoadPackage
 import de.robv.android.xposed.IXposedHookZygoteInit
@@ -30,7 +30,7 @@ class XposedInit : IXposedHookLoadPackage, IXposedHookZygoteInit {
 
     override fun handleLoadPackage(lpparam: XC_LoadPackage.LoadPackageParam) {
         if (lpparam.packageName !in HTTP_CANARY_PACKAGE_NAME
-            &&  runCatching { Class.forName("com.guoshi.httpcanary.ui.SplashActivity") }.isFailure) return
+            &&  runCatching { Class.forName("com.guoshi.httpcanary.ui.HomeActivity") }.isFailure) return
 
         EzXHelperInit.initHandleLoadPackage(lpparam)
 

@@ -1,4 +1,4 @@
-package com.duzhaokun123.hcbetter.hook
+package io.github.duzhaokun123.hcbetter.hook
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -10,11 +10,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ScrollView
 import android.widget.TextView
-import com.duzhaokun123.hcbetter.BuildConfig
-import com.duzhaokun123.hcbetter.TestActivity
-import com.duzhaokun123.hcbetter.XposedInit
-import com.duzhaokun123.hcbetter.utils.*
-import com.duzhaokun123.hcbetter.view.SimpleItem
+import io.github.duzhaokun123.hcbetter.BuildConfig
+import io.github.duzhaokun123.hcbetter.TestActivity
+import io.github.duzhaokun123.hcbetter.XposedInit
+import io.github.duzhaokun123.hcbetter.utils.*
+import io.github.duzhaokun123.hcbetter.view.SimpleItem
 
 class AboutHook(mClassLoader: ClassLoader) : BaseHook(mClassLoader) {
     @SuppressLint("SetTextI18n")

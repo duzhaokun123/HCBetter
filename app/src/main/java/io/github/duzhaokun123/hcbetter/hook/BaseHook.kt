@@ -1,4 +1,4 @@
-package com.duzhaokun123.hcbetter.hook
+package io.github.duzhaokun123.hcbetter.hook
 
 abstract class BaseHook(val mClassLoader: ClassLoader) {
     abstract fun startHook()

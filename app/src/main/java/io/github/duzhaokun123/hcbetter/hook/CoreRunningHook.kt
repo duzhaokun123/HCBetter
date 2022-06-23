@@ -1,6 +1,6 @@
-package com.duzhaokun123.hcbetter.hook
+package io.github.duzhaokun123.hcbetter.hook
 
-import com.duzhaokun123.hcbetter.utils.hookAfterMethod
+import io.github.duzhaokun123.hcbetter.utils.hookAfterMethod
 
 class CoreRunningHook(mClassLoader: ClassLoader) : BaseHook(mClassLoader) {
     companion object {

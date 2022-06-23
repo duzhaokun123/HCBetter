@@ -1,4 +1,4 @@
-package com.duzhaokun123.hcbetter.utils
+package io.github.duzhaokun123.hcbetter.utils
 
 import android.app.Activity
 import android.app.AndroidAppHelper
@@ -9,13 +9,12 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.view.ViewGroup
-import com.duzhaokun123.hcbetter.XposedInit
+import io.github.duzhaokun123.hcbetter.XposedInit
 import kotlinx.coroutines.*
 import org.bouncycastle.openssl.jcajce.JcaPEMWriter
 import java.io.File
 import java.lang.reflect.Method
 import java.security.KeyStore
-import kotlin.coroutines.CoroutineContext
 
 val HTTP_CANARY_PACKAGE_NAME = listOf("com.guoshi.httpcanary.premium", "com.guoshi.httpcanary")
 

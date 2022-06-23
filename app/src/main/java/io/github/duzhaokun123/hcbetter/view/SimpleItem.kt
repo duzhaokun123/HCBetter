@@ -1,15 +1,12 @@
-package com.duzhaokun123.hcbetter.view
+package io.github.duzhaokun123.hcbetter.view
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.FrameLayout
-import android.widget.LinearLayout
 import android.widget.TextView
-import com.duzhaokun123.hcbetter.R
-import com.duzhaokun123.hcbetter.XposedInit.Companion.moduleRes
-import com.github.kyuubiran.ezxhelper.init.EzXHelperInit
+import io.github.duzhaokun123.hcbetter.R
+import io.github.duzhaokun123.hcbetter.XposedInit.Companion.moduleRes
 
 class SimpleItem @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0

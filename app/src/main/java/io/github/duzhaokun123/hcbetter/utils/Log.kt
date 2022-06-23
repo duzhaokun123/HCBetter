@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package com.duzhaokun123.hcbetter.utils
+package io.github.duzhaokun123.hcbetter.utils
 
 import android.os.Handler
 import android.os.Looper

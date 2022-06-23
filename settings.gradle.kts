@@ -7,4 +7,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "HC Better"
-include ':app'
+include(":app")

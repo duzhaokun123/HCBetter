@@ -1,4 +1,4 @@
-package com.duzhaokun123.hcbetter.hook
+package io.github.duzhaokun123.hcbetter.hook
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -7,10 +7,10 @@ import android.view.Menu
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ScrollView
-import com.duzhaokun123.hcbetter.R
-import com.duzhaokun123.hcbetter.XposedInit.Companion.moduleRes
-import com.duzhaokun123.hcbetter.utils.*
-import com.duzhaokun123.hcbetter.view.SimpleItem
+import io.github.duzhaokun123.hcbetter.R
+import io.github.duzhaokun123.hcbetter.XposedInit.Companion.moduleRes
+import io.github.duzhaokun123.hcbetter.utils.*
+import io.github.duzhaokun123.hcbetter.view.SimpleItem
 import kotlinx.coroutines.delay
 import net.lingala.zip4j.ZipFile
 import net.lingala.zip4j.model.ZipParameters
