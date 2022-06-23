@@ -38,12 +38,6 @@ class HomeHook(mClassLoader: ClassLoader) : BaseHook(mClassLoader) {
                 }
             }
         }
-        val callFloatReceiver = object : BroadcastReceiver() {
-            override fun onReceive(context: Context?, intent: Intent?) {
-                val activity = context as Activity
-                activity.findViewByClass("com.guoshi.httpcanary.ui.ServiceButton".findClass(activity::class.java.classLoader))[0].callOnClick()
-            }
-        }
         lateinit var enterPIP: Method
     }
 
@@ -69,10 +63,9 @@ class HomeHook(mClassLoader: ClassLoader) : BaseHook(mClassLoader) {
             "onResume"
         ) {
             val self = it.thisObject as Activity
-            self.registerReceiver(enterPiPReceiver, IntentFilter(ACTION_ENTER_PIP))
             if (self.window.decorView.tag != "hooked") {
                 self.window.decorView.tag = "hooked"
-                self.registerReceiver(callFloatReceiver, IntentFilter(ACTION_CALL_FLOAT))
+                self.registerReceiver(enterPiPReceiver, IntentFilter(ACTION_ENTER_PIP))
             }
             self.window.apply{
                 clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -81,17 +74,10 @@ class HomeHook(mClassLoader: ClassLoader) : BaseHook(mClassLoader) {
         }
         "com.guoshi.httpcanary.ui.HomeActivity".hookBeforeMethod(
             mClassLoader,
-            "onPause"
-        ) {
-            val self = it.thisObject as Activity
-            self.unregisterReceiver(enterPiPReceiver)
-        }
-        "com.guoshi.httpcanary.ui.HomeActivity".hookBeforeMethod(
-            mClassLoader,
             "onDestroy"
         ) {
             val self = it.thisObject as Activity
-            self.unregisterReceiver(callFloatReceiver)
+            self.unregisterReceiver(enterPiPReceiver)
         }
     }
 }
