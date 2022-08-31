@@ -36,6 +36,7 @@ class AboutHook(mClassLoader: ClassLoader) : BaseHook(mClassLoader) {
                                     "SDK: ${Build.VERSION.RELEASE}(${Build.VERSION.SDK_INT}); Phone: ${Build.BRAND} ${Build.MODEL}\n" +
                                     "Config: ${sPrefs.all}")
                             .show()
+                            .window?.blurBackground()
                     }
                 })
                 addView(Button(self).apply {
